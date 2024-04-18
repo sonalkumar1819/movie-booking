@@ -1,0 +1,132 @@
+/* style.css */
+body {
+    background-image: url('your-movie-background.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s;
+}
+
+.login-box:hover {
+    transform: translateZ(10px);
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-box {
+    margin-bottom: 10px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #4cae4c;
+}
+
+section.contact-me{
+    margin-top: 10%;
+    height: 640px;
+    background-color:rgb(17, 15,15);
+    border-bottom: 5px solid darkorange;
+
+}
+.contact-div .heading{
+    color: white;
+}
+.img1{
+    float:right;
+    margin-right: 550px;
+    margin-bottom: 200px;
+    height: 10px;
+    width: 10px;
+    border-radius: 125px;
+}
+::placeholder{
+    font-size: 20px;
+}
+.form-contact{
+    margin-left: 155px;
+    margin-top: 110px;
+}
+.input-box{
+    width:40%;
+    border:1px solid white;
+    margin:6px 0;
+    color: white;
+    height: 35px;
+    border-radius: 20px;
+    background:transparent;
+    outline: none;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300px;
+}
+.message{
+    width:40%;
+    border:1px solid white;
+    margin:6px 0;
+    color: white;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 20px;
+    background:transparent;
+    resize: none;
+    outline: none;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300px;
+    
+}
+.send{
+    width: 40%;
+    border: 1px solid white;
+    margin: 33px 0 11px;
+    height: 32px;
+    padding: 0 10px;
+    font-size: 19px;
+    border-radius: 20px;
+    background: transparent;
+    color: white;
+    outline: none;
+    cursor:point
+}
+.send:hover{
+background-color: #28245b;
+transition: all 0.3s ease-in;
+    };
+
+    

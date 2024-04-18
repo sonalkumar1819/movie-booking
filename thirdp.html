@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upcoming Movies</title>
+  <style>
+    body {
+      background-color: #222;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #background-animation {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    h1 {
+      color: #fff;
+      font-family: Algerian, sans-serif;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    table {
+      width: 70%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2c641;
+      color: #006400;
+      text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ffc107;
+      font-weight: bold;
+    }
+
+    .animated-name {
+      display: inline-block;
+      overflow: hidden;
+      animation: animateName 2s infinite alternate;
+    }
+
+    @keyframes animateName {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes backgroundAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Upcoming Movies</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Movie Title</th>
+        <th>Release Date</th>
+        <th>Advance Booking</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="animated-name">Adipurush</span></td>
+        <td>12 January 2023</td>
+        <td><button onclick="showDetails('Adipurush')">Show Details</button></td>
+      </tr>
+      <tr>
+        <td><span class="animated-name">Pathaan</span></td>
+        <td>25 January 2023</td>
+        <td><button onclick="showDetails('Pathaan')">Show Details</button></td>
+      </tr>
+      <!-- Add more movie rows -->
+      <tr>
+        <td><span class="animated-name">Fighter</span></td>
+        <td>28 September 2023</td>
+        <td><button onclick="showDetails('Fighter')">Show Details</button></td>
+      </tr>
+      <tr>
+        <td><span class="animated-name">Bholaa</span></td>
+        <td>30 March 2023</td>
+        <td><button onclick="showDetails('Bholaa')">Show Details</button></td>
+      </tr>
+      <tr>
+        <td><span class="animated-name">Dunki</span></td>
+        <td>22 December 2023</td>
+        <td><button onclick="showDetails('Dunki')">Show Details</button></td>
+      </tr>
+      <!-- Add more movie rows as needed -->
+    </tbody>
+  </table>
+
+  <!-- JavaScript -->
+  <script>
+    function showDetails(movie) {
+      // You can implement your logic to fetch movie details here
+      alert("Showing details for " + movie);
+      // For demonstration purposes, you can replace this alert with a modal or expand the row to show details
+    }
+
+    // Background Animation
+    const background = document.getElementById('background-animation');
+    let animationSpeed = 20; // Change the animation speed as needed
+
+    function animateBackground() {
+      let currentPosition = 0;
+      setInterval(() => {
+        currentPosition -= 1;
+        background.style.backgroundPosition = `${currentPosition}px 50%`;
+      }, animationSpeed);
+    }
+
+    animateBackground();
+  </script>
+
+  <!-- Background Animation -->
+  <div id="background-animation" style="position: absolute; width: 100%; height: 100%; z-index: -1; background: linear-gradient(to right, #ff8a00, #da1b60, #da1b60, #ff8a00); background-size: 400% 400%; animation: backgroundAnimation 15s infinite;"></div>
+</body>
+</html>

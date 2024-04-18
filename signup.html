@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Resetting margins and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0c1b33; /* Dark navy blue */
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container for the sign up form */
+        .signup_form_container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Form styling */
+        .signup_form {
+            width: 350px;
+            padding: 20px;
+            background-color: #1e2933; /* Deep gray */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Heading styling */
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Input group styling */
+        .input_group {
+            width: 100%;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Icon styling */
+        .input_group i {
+            margin-right: 10px;
+            color: #4a90e2; /* Light blue color */
+        }
+
+        /* Input text styling */
+        .input_text {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-bottom: 2px solid #4a90e2; /* Light blue border */
+            outline: none;
+            background: transparent;
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Placeholder styling */
+        ::placeholder {
+            color: #b0b0b0; /* Light gray */
+        }
+
+        /* Link styling for submit button */
+        #signup_button a {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff4c4c; /* Red button */
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            display: block;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Link hover effect */
+        #signup_button a:hover {
+            background-color: #ff3030; /* Darker red on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/signup_action.php" method="post" id="signupForm">
+        <div class="signup_form_container">
+            <div class="signup_form">
+                <h2>Sign Up</h2>
+                <div class="input_group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="full_name" required placeholder="Full Name" class="input_text" autocomplete="off">
+                </div>
+                <div class="input_group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="email" required placeholder="Email" class="input_text" autocomplete="off">
+                </div>
+                <div class="input_group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="username" required placeholder="Username" class="input_text" autocomplete="off">
+                </div>
+                <div class="input_group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" required placeholder="Password" class="input_text" autocomplete="off">
+                </div>
+                <div id="signup_button">
+                    <a href="sign.html" onclick="handleFormSubmission(event)">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        // Function to handle the form submission
+        function handleFormSubmission(event) {
+            event.preventDefault(); // Prevent the default link behavior
+
+            var form = document.getElementById('signupForm');
+            var fullName = form['full_name'].value.trim();
+            var email = form['email'].value.trim();
+            var username = form['username'].value.trim();
+            var password = form['password'].value.trim();
+
+            // Check if all fields are filled out
+            if (fullName !== '' && email !== '' && username !== '' && password !== '') {
+                // All fields are filled out correctly
+
+                // Display a message indicating successful sign-up
+                alert('Sign up successful! You can now sign in.');
+
+                // Redirect to the sign-in page after successful sign-up
+                window.location.href = 'sign.html'; // Replace 'signin.html' with the URL of your sign-in page
+            } else {
+                // If any field is not filled out, display an error message
+                alert('Please fill out all required fields.');
+            }
+        }
+    </script>
+</body>
+
+</html>

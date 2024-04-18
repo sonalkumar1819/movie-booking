@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suggested Movies</title>
+  <style>
+    /* Reset margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0c1b33; /* Dark navy blue background color */
+      color: white;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    /* Keyframes for fade-in animation */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Container for movies */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    /* Movie container styling */
+    .movie-container {
+      width: 200px;
+      height: 350px;
+      margin: 10px;
+      border: 1px solid #ccc;
+      background-color: rgba(0, 0, 0, 0.7); /* Dark background */
+      text-align: center;
+      padding: 10px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+      border-radius: 8px;
+    }
+
+    /* Movie hover effect */
+    .movie-container:hover {
+      transform: translateY(-10px);
+      background-color: rgba(0, 0, 0, 0.8); /* Slightly darker on hover */
+    }
+
+    /* Image styling */
+    .movie-container img {
+      max-width: 100%;
+      max-height: 200px;
+      transition: transform 0.3s ease-in-out;
+      border-radius: 8px;
+    }
+
+    /* Image hover effect */
+    .movie-container:hover img {
+      transform: scale(1.05); /* Zoom-in effect */
+    }
+
+    /* Overlay styling */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    /* Show overlay on hover */
+    .movie-container:hover .overlay {
+      opacity: 1;
+    }
+
+    /* Button styling */
+    .more-button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #007bff; /* Bootstrap blue color */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    /* Button hover effect */
+    .more-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="movies-container">
+    <!-- Initial movies -->
+    <div class="movie-container">
+      <img src="https://rukminim2.flixcart.com/image/850/1000/l3bx5e80/poster/p/x/m/small-kgf-poster-kgf-yash-movie-poster-for-room-kgf-chapter-2-original-imageh8qchumcz8k.jpeg?q=20&crop=false"
+        alt="Movie 1">
+      <div class="overlay">
+        <h3>Movie 1</h3>
+        <p>Description of Movie 1</p>
+      </div>
+    </div>
+    <div class="movie-container">
+      <img src="https://marketplace.canva.com/EAFTl0ixW_k/1/0/1131w/canva-black-white-minimal-alone-movie-poster-YZ-0GJ13Nc8.jpg"
+        alt="Movie 2">
+      <div class="overlay">
+        <h3>Movie 2</h3>
+        <p>Description of Movie 2</p>
+      </div>
+    </div>
+    <div class="movie-container">
+      <img src="https://m.media-amazon.com/images/I/91zTlD7AY1L.jpg" alt="Movie 3">
+      <div class="overlay">
+        <h3>Movie 3</h3>
+        <p>Description of Movie 3</p>
+      </div>
+    </div>
+    <div class="movie-container">
+      <img src="https://images-cdn.ubuy.co.in/63b7b107d4159432fb5ec817-avengers-infinity-war-movie-poster.jpg"
+        alt="Movie 4">
+      <div class="overlay">
+        <h3>Movie 4</h3>
+        <p>Description of Movie 4</p>
+      </div>
+    </div>
+    <div class="movie-container">
+      <img src="https://images.indianexpress.com/2021/01/master.jpg?w=350" alt="Movie 5">
+      <div class="overlay">
+        <h3>Movie 5</h3>
+        <p>Description of Movie 5</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- More movies button -->
+  <button class="more-button" onclick="loadNextPage()">More Movies</button>
+
+  <script>
+    let currentPage = 1; // Track current page number
+
+    // Function to load the next page of movies
+    function loadNextPage() {
+      currentPage++; // Increment page number
+
+      // Simulate fetching additional movies
+      setTimeout(() => {
+        const newMovies = document.createElement('div');
+        newMovies.classList.add('container');
+
+        // Loop to create more movie containers
+        for (let i = 1; i <= 5; i++) {
+          const movieDiv = document.createElement('div');
+          movieDiv.classList.add('movie-container');
+
+          const img = document.createElement('img');
+          img.src = `https://via.placeholder.com/200x300?text=Movie+${((currentPage - 1) * 5 + i)}`;
+          img.alt = `Movie ${((currentPage - 1) * 5 + i)}`;
+
+          const overlay = document.createElement('div');
+          overlay.classList.add('overlay');
+          overlay.innerHTML = `
+            <h3>Movie ${((currentPage - 1) * 5 + i)}</h3>
+            <p>Description of Movie ${((currentPage - 1) * 5 + i)}</p>
+          `;
+
+          movieDiv.appendChild(img);
+          movieDiv.appendChild(overlay);
+          newMovies.appendChild(movieDiv);
+        }
+
+        // Append new movies to the body
+        document.body.insertBefore(newMovies, document.querySelector('.more-button'));
+      }, 500); // Simulating loading delay of 0.5 seconds
+    }
+  </script>
+</body>
+
+</html>

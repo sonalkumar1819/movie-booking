@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Ticket</title>
+<style>
+/* External CSS (styles.css) */
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #282c34;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+header, footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #1c1f24; /* Dark gray background for header and footer */
+}
+
+h1 {
+    color: #61dafb; /* Light blue for header title */
+}
+
+footer p {
+    color: #61dafb; /* Light blue for footer text */
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+form {
+    background-color: #1c1f24; /* Dark gray background for the form */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+form:hover {
+    transform: scale(1.05);
+}
+
+label {
+    font-weight: bold;
+    color: #61dafb;
+}
+
+input, select {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #61dafb;
+}
+
+input[type="submit"], input[type="reset"] {
+    background-color: #61dafb;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: #4d9fe6;
+}
+
+#success-message {
+    color: #28a745;
+    font-weight: bold;
+    display: none;
+}
+
+/* Unique effect for the name input field when clicked */
+input#name:focus {
+    background-color: #ffe0b2; /* Unique color (orange) */
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), 
+                0px 6px 20px rgba(0, 0, 0, 0.19); /* 3D effect using box-shadow */
+    transform: scale(1.05); /* Slight scale for 3D effect */
+}
+input#mobile:focus {
+    background-color: #ffe0b2; /* Unique color (orange) */
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), 
+                0px 6px 20px rgba(0, 0, 0, 0.19); /* 3D effect using box-shadow */
+    transform: scale(1.05); /* Slight scale for 3D effect */
+}
+input#email:focus {
+    background-color: #ffe0b2; /* Unique color (orange) */
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), 
+                0px 6px 20px rgba(0, 0, 0, 0.19); /* 3D effect using box-shadow */
+    transform: scale(1.05); /* Slight scale for 3D effect */
+}
+
+
+</style>
+</head>
+<body>
+    <main>
+        <form id="booking-form">
+            <fieldset>
+                <legend>Book Ticket</legend>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Name" required>
+                <br>
+                <label for="mobile">Mobile number:</label>
+                <input type="tel" id="mobile" name="mobile" placeholder="Mobile number" required>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <br>
+                <label for="movie">Movie:</label>
+                <select id="movie" name="movie" required>
+                    <option value="">Select a movie</option>
+                    <option value="Brahmastra">Brahmastra</option>
+                    <option value="Bheriya">Bheriya</option>
+                    <option value="Ek Villain Return">Ek Villain Return</option>
+                    <option value="Kartikey2">Kartikey2</option>
+                    <option value="RRR">RRR</option>
+                    <option value="Spider Man">Spider Man</option>
+                </select>
+                <br>
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+                <br>
+                <label for="time">Timing:</label>
+                <input type="time" id="time" name="time" required>
+                <br>
+                <input type="submit" value="Book Now">
+                <input type="reset" value="Reset">
+                <p id="success-message" style="display: none;">Booking successful!</p>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Movie Ticket Booking. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Handle form submission
+        document.getElementById('booking-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            const formData = {
+                name: document.getElementById('name').value,
+                mobile: document.getElementById('mobile').value,
+                email: document.getElementById('email').value,
+                movie: document.getElementById('movie').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+            };
+
+            // Send form data to server via AJAX
+            fetch('/book-ticket', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Display booking successful message
+                    document.getElementById('success-message').style.display = 'block';
+                } else {
+                    alert('Booking failed. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>
